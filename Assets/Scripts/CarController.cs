@@ -45,6 +45,7 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         source = GetComponent<AudioSource>();
+
         
     }
     private void FixedUpdate()
@@ -61,6 +62,7 @@ public class CarController : MonoBehaviour
             {
                 source.Play();
             }
+            
         }
     }
 
