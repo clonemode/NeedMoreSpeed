@@ -17,6 +17,7 @@ public class CarController : MonoBehaviour
     private float currentSteerAngle;
     private float currentbreakForce;
     private bool isBreaking;
+   
 
     private AudioSource source;
 
@@ -48,11 +49,19 @@ public class CarController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        GetInput();
-        HandleMotor();
-        HandleSteering();
-        UpdateWheels();
-        CarSpeedUI();
+        if (!PauseMenu.IsPaused)
+        {
+            GetInput();
+            HandleMotor();
+            HandleSteering();
+            UpdateWheels();
+            CarSpeedUI();
+
+            if (Input.GetKey(KeyCode.Space) && !source.isPlaying)
+            {
+                source.Play();
+            }
+        }
     }
 
 
@@ -113,31 +122,6 @@ public class CarController : MonoBehaviour
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
     }
-    public void MainMenu()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-    }
-    public void PauseMenu()
-    {
-        
-    }
-    public void Update()
-    {
-        if (Input.GetKeyDown("q"))
-        {
-            MainMenu();
-        }
-
-        if (Input.GetKeyDown("p"))
-        {
-            PauseMenu();
-        }
-
-        if (Input.GetKey(KeyCode.Space) && !source.isPlaying)
-        {
-            source.Play();
-        }
-    }
-   
+    
 
 }
