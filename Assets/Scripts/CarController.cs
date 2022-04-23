@@ -17,7 +17,8 @@ public class CarController : MonoBehaviour
     private float currentSteerAngle;
     private float currentbreakForce;
     private bool isBreaking;
-   
+
+
 
     private AudioSource source;
 
@@ -45,10 +46,8 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         source = GetComponent<AudioSource>();
-
-        
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if (!PauseMenu.IsPaused)
         {
@@ -56,24 +55,38 @@ public class CarController : MonoBehaviour
             HandleMotor();
             HandleSteering();
             UpdateWheels();
-            CarSpeedUI();
+            UI();
+            ResetPos();
 
             if (Input.GetKey(KeyCode.Space) && !source.isPlaying)
             {
                 source.Play();
             }
-            
         }
     }
 
-
-    private void CarSpeedUI()
+    private void ResetPos()
     {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            transform.position = new Vector3(transform.position.x, 2, transform.position.z);
+            transform.rotation = Quaternion.Euler(0,-90,0);
+        }
+    }
+
+    private void UI()
+    {
+        //Carspeed 
         // 3.6 is the constant to convert a value from m/s to km/h.
         currentSpeed = (float)Math.Round(rb.velocity.magnitude * 3.6f, decimalPlaces);
         //currentSpeed = (float)Math.Round((double)rb.velocity.magnitude * 3.6f, 0);
         speedText.text = currentSpeed.ToString() + " km/h";
+        //LapTimer
+
+
+
     }
+
 
     private void GetInput()
     {
