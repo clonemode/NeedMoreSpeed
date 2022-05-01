@@ -54,14 +54,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\LapTimeManager.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
-    <Compile Include="Assets\Scripts\LapTimeManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\action_man_italic\Readme.txt" />
-    <None Include="Assets\Complete Music Collection FREE Edition\readme.txt" />
+    <None Include="Assets\Audio\Complete Music Collection FREE Edition\readme.txt" />
     <None Include="Assets\BEDRILL\Modular_Track_Free\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
